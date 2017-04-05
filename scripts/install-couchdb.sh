@@ -1,13 +1,12 @@
-#!/bin/bash
+!#/bin/bash
 
 yum -y update
 yum -y install epel-release
-yum -y install autoconf autoconf-archive automake ncurses-devel curl-devel erlang erlang-asn1 erlang-erts erlang-eunit erlang-os_mon erlang-xmerl gcc-c++ help2man js-devel libicu-devel libtool perl-Test-Harness wget
+yum -y install autoconf autoconf-archive automake ncurses-devel curl-devel erlang erlang-asn1 erlang-erts erlang-eunit erlang-os_mon erlang-xmerl gcc-c++ help2man js-devel libicu-devel libtool make perl perl-Test-Harness wget 
 
-
-wget http://www-us.apache.org/dist/couchdb/source/2.0.0/apache-couchdb-2.0.0.tar.gz
-tar -xvf apache-couchdb-2.0.0.tar.gz
-cd apache-couchdb-2.0.0
+http://www-us.apache.org/dist/couchdb/source/1.6.1/apache-couchdb-1.6.1.tar.gz
+tar -xvf apache-couchdb-1.6.1.tar.gz
+cd apache-couchdb-1.6.1
 ./configure
 make && make install
 
@@ -29,6 +28,3 @@ firewall-cmd --zone=public --add-port=5984/tcp   --permanent
 
 # Restart the firewalld service
 firewall-cmd --reload
-
-# Start couchdb as a daemon
-/usr/local/etc/rc.d/couchdb start
